@@ -1,4 +1,5 @@
 Vagrant.configure("2") do |config|
+    config.ssh.insert_key = false
     config.vm.define "R1" do |node|
       node.vm.box = "iosxe/clus-gs.20170524"
       node.vm.network "private_network",
@@ -17,6 +18,7 @@ Vagrant.configure("2") do |config|
           "--type", "dvddrive",
           "--medium", "R1.iso"
         ]
+
         #v.customize ["modifyvm", :id,
         #  "--uart1", "0x3F8", 4,
         #  "--uartmode1", 'tcpserver', 65000
