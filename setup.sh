@@ -1,5 +1,5 @@
 #!/bin/bash
 # Prepare environment for DEVNET2449 Lab
 
-vagrant up rtr1
-docker run -it --rm -p58888:58888 -v$(pwd):/home/docker/ kuhlskev/ansible_ydk_jupyter
+vagrant up R1
+docker run -it --rm -p 58888:58888 -v $(pwd)/notebooks:/home/docker/ dmfigol/jupyter-netdevops-py3

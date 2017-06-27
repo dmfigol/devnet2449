@@ -6,37 +6,33 @@ To Follow along the exercises on your own you will need:
 - Git client
 - VirtualBox 5.0.28
 - Docker 1.13.1
-- Vagrant 1.8.7 (be aware of this issue)
+- Vagrant 1.8.7
 - cdrtools (in particular mkisofs)
 - a build environment (e.g. compiler, make, ...), suggest to use MacPorts or Brew if running on a Mac
 - Clone the [repository from GitHub](https://github.com/ios-xr/iosxrv-x64-vbox)
-- [IOS XE image](https://software.cisco.com/download/type.html?mdfid=284364978&catid=null) from Cisco.com, then go to IOS XE Software and download the Denali-16.3.2 .iso file in the Latest tree branch, ~350MB in size)
+- [IOS XE image](https://software.cisco.com/download/type.html?mdfid=284364978&catid=null) from Cisco.com, then go to IOS XE Software and download the Denali-16.5.1 or higher .iso file)
 
-1. Go to the directory where you cloned the iso-xrv-x64-vbox repository.
-2. Create the Vagrant box image build by running the following command:
+1. Clone the following Git repository:
+   `git clone https://github.com/ios-xr/iosxrv-x64-vbox && cd iosxrv-x64-vbox`
 
-	`iosxe_iso2vbox.py -v ~/Downloads/csr1000v-universalk9.16.03.02.iso`
+2. Create the Vagrant box image build by running the following command.
 
-3. This will take a while. When done, you need to install the resulting box into Vagrant:
+	`iosxe_iso2vbox.py -v ~/Downloads/<csr_iso_file>`
 
-	`vagrant box add --name iosxe csr1000v-universalk9.16.03.02.box`
+   This may take a while.
 
-	(See the output at the end of the script. It has the exact location of the generated box file and also the command to add / replace the Vagrant box file).
+3. Install this image to vagrant
 
-4. Clone [this repo](https://github.com/kuhlskev/devnet1002) from GitHub into a new directory.
+	`vagrant box add --name csr <csr_box_file_created_on_step_2>`
 
-	`git clone https://github.com/kuhlskev/devnet1002`
-
-5. Make sure that the Vagrant box name matches the one configured in the Vagrant file
+5. Make sure that the Vagrant box name matches the one configured in the Vagrantfile
 
 6. Ensure you have the required tools installed
 
+	https://github.com/dmfigol/devnet2449.git
+
 7. run `make` to create the ISO files with the router configurations
 
-8. Bring up the routers using `vagrant up` (brings up both) or `vagrant up rtr1` to only start rtr1
-
-9. Run the `kuhlskev/ansible_host` docker container (or you can install components, see Dockerfile for prerequisites)
-
-	`docker run -it --rm -v$(pwd):/home/docker kuhlskev/ansible_host /bin/sh`
+8. Bring up the routers using `vagrant up` (brings up both) or `vagrant up R1` to only start R1
 
 you can see the setup.sh script to bring up the router and docker container as in the session

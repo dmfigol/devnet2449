@@ -1,0 +1,7 @@
+Value interface_name (\S+)
+Value ip_address (\S+)
+Value l1_link_status (up|down|administratively down)
+Value l2_link_status (up|down)
+
+Start
+  ^${interface_name}\s+${ip_address}\s+(\w+\s+){2}${l1_link_status}\s+${l2_link_status} -> Record

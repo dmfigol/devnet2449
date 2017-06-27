@@ -1,0 +1,9 @@
+Value name (.*)
+Value description (.*)
+Value product_id (.+?)
+Value version_id (.+?)
+Value serial_number (\w*)
+
+Start
+  ^NAME: "${name}", DESCR: "${description}"
+  ^PID: ${product_id}\s*, VID: +${version_id}\s*, SN: ${serial_number} -> Record

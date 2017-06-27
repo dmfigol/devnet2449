@@ -1,0 +1,15 @@
+Value version (\S+)
+Value hostname (\S+)
+Value uptime (.+)
+Value image (\S+)
+Value last_reload_reason (.+)
+Value license (\w+)
+Value config_register (0x[\da-fA-F]{,4})
+
+Start
+  ^Cisco IOS Software\s.+?Version\s+${version}
+  ^${hostname}\s+uptime\s+is\s+${uptime}
+  ^System image file is "${image}"
+  ^Last reload reason: ${last_reload_reason}
+  ^License Level: ${license}
+  ^Configuration register is ${config_register}
