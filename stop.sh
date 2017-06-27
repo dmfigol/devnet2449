@@ -1,5 +1,6 @@
 #!/bin/bash
 # Prepare environment for DEVNET2449 Lab
 
-vagrant suspend rtr1
+vagrant suspend R1
 docker rm -f `docker ps -a -q`
+rm ~/.ssh/known_hosts
