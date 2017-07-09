@@ -3,4 +3,3 @@
 
 vagrant suspend R1
 docker rm -f `docker ps -a -q`
-rm ~/.ssh/known_hosts
